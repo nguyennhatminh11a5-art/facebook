@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { clearSession, useCurrentUser } from '@/features/auth/session'
+import { FriendsSidebar } from '@/features/friends/FriendsSidebar'
 import { cn } from '@/lib/utils'
 
 type NavItem = { to: string; label: string; icon: ReactNode; end?: boolean }
@@ -99,6 +100,12 @@ export function AppLayout() {
         <main className="mx-auto w-full max-w-2xl min-w-0">
           <Outlet />
         </main>
+
+        <aside className="hidden xl:block" aria-label="Bạn bè">
+          <div className="sticky top-18">
+            <FriendsSidebar />
+          </div>
+        </aside>
       </div>
 
       <nav
