@@ -1,0 +1,26 @@
+# MySQL cho môi trường dev. Biến lấy từ file .env ở thư mục gốc (xem .env.example).
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: minifb-mysql
+    environment:
+      MYSQL_DATABASE: minifb
+      MYSQL_USER: minifb
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Đặt DB_PASSWORD trong .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Đặt DB_ROOT_PASSWORD trong .env}
+      TZ: UTC
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    ports:
+      - '127.0.0.1:${DB_PORT:-3306}:3306'
+    volumes:
+      - minifb-mysql:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  minifb-mysql:

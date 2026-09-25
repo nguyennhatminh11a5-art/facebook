@@ -1,0 +1,18 @@
+# Lớp 2 (CLAUDE.md mục 11): chạy trên file đã stage. Cài: `lefthook install`. Không dùng --no-verify.
+pre-commit:
+  parallel: true
+  commands:
+    gitleaks:
+      run: gitleaks git --staged --redact --no-banner --config .gitleaks.toml
+    spotless:
+      glob: 'backend/**/*.java'
+      root: 'backend/'
+      run: mvn -q -B spotless:check
+    prettier:
+      glob: 'frontend/**/*.{ts,tsx,js,json,css,html,md}'
+      root: 'frontend/'
+      run: npx prettier --check {staged_files}
+    eslint:
+      glob: 'frontend/**/*.{ts,tsx,js}'
+      root: 'frontend/'
+      run: npx eslint --max-warnings=0 {staged_files}

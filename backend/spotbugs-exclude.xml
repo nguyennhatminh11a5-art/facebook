@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mỗi mục loại trừ phải ghi lý do. -->
+<FindBugsFilter>
+  <!--
+    CSRF tắt có chủ đích (CLAUDE.md mục 6): API xác thực bằng header Bearer (trình duyệt không tự
+    gửi); hai endpoint dùng cookie (/auth/refresh, /auth/logout) dựa vào SameSite=Strict + chỉ POST.
+  -->
+  <Match>
+    <Class name="com.minifb.security.SecurityConfig"/>
+    <Bug pattern="SPRING_CSRF_PROTECTION_DISABLED"/>
+  </Match>
+</FindBugsFilter>

@@ -1,0 +1,10 @@
+title = "mini-facebook gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Giá trị giả chỉ dùng cho test"
+paths = [
+  '''backend/src/test/resources/application-test\.properties''',
+]
