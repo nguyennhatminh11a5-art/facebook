@@ -99,7 +99,7 @@ Package-by-feature: mỗi feature có `XxxController`, `XxxService`, `XxxReposit
 ### 5.1 Phân trang cursor
 
 - Áp dụng cho feed, bài của một người, bình luận, danh sách bạn bè, tìm kiếm. Không dùng OFFSET.
-- `cursor` = base64url của `createdAt|id` (bạn bè/tìm kiếm: của `id`). Cursor sai định dạng → 400.
+- `cursor` = base64url của `createdAt|id` (bạn bè: `id` của người bạn; tìm kiếm: `id` người dùng). Cursor sai định dạng → 400.
 - `size` mặc định 10, tối đa 50. Truy vấn `LIMIT size + 1` để biết còn trang sau.
 - Response: `{ "items": [...], "nextCursor": "..." | null }`.
 - Viết điều kiện tường minh (MySQL không dùng index tốt với so sánh bộ `(a, b) < (x, y)`), và viết
