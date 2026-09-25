@@ -66,6 +66,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
   @Query("SELECT p FROM Post p WHERE p.id = :id")
   Optional<Post> findByIdForUpdate(@Param("id") long id);
 
+  @Query(value = "SELECT reaction_count FROM posts WHERE id = :id", nativeQuery = true)
+  int reactionCount(@Param("id") long id);
+
+  @Query(value = "SELECT comment_count FROM posts WHERE id = :id", nativeQuery = true)
+  int commentCount(@Param("id") long id);
+
   @Modifying
   @Query(
       value = "UPDATE posts SET reaction_count = reaction_count + :delta WHERE id = :id",
