@@ -20,7 +20,7 @@
 		<thumbnailator.version>0.4.21</thumbnailator.version>
 		<twelvemonkeys.version>3.15.2</twelvemonkeys.version>
 		<bucket4j.version>8.20.0</bucket4j.version>
-		<spotless.version>3.10.2</spotless.version>
+		<spotless.version>3.10.3</spotless.version>
 		<google-java-format.version>1.36.1</google-java-format.version>
 		<spotbugs-plugin.version>4.10.4.1</spotbugs-plugin.version>
 		<findsecbugs.version>1.14.0</findsecbugs.version>
